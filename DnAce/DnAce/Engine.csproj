@@ -8,8 +8,8 @@
     <ProjectGuid>{3E1AE90D-A72E-4273-9DB6-E8CE43FD3C86}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DnAce</RootNamespace>
-    <AssemblyName>DnAce</AssemblyName>
+    <RootNamespace>Engine</RootNamespace>
+    <AssemblyName>Engine</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
     <MonoGameContentBuilderExe>
