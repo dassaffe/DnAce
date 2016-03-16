@@ -13,3 +13,14 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Fonts/Arial.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Arial.spritefont
+
+#begin ScreenManager.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:ScreenManager.xml
+
