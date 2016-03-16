@@ -1,8 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-// hallo, na?
-// was geht
+
 namespace Engine
 {
     /// <summary>
