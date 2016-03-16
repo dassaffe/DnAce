@@ -4,8 +4,6 @@ using Microsoft.Xna.Framework.Input;
 
 namespace DnAce
 {
-
-    // hallo 
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
