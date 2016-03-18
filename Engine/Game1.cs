@@ -1,5 +1,4 @@
-﻿using Engine.Manager;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -27,9 +26,7 @@ namespace Engine
         /// </summary>
         protected override void Initialize()
         {
-            graphics.PreferredBackBufferWidth = (int)ScreenManager.Instance.Dimensions.X;
-            graphics.PreferredBackBufferHeight = (int)ScreenManager.Instance.Dimensions.Y;
-            graphics.ApplyChanges();
+            // TODO: Add your initialization logic here
 
             base.Initialize();
         }
@@ -43,10 +40,7 @@ namespace Engine
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ScreenManager.Instance.GraphicsDevice = GraphicsDevice;
-            ScreenManager.Instance.SpriteBatch = spriteBatch;
-
-            ScreenManager.Instance.LoadContent(Content);
+            // TODO: use this.Content to load your game content here
         }
 
         /// <summary>
@@ -55,7 +49,7 @@ namespace Engine
         /// </summary>
         protected override void UnloadContent()
         {
-            ScreenManager.Instance.UnloadContent();
+            // TODO: Unload any non ContentManager content here
         }
 
         /// <summary>
@@ -68,7 +62,7 @@ namespace Engine
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            ScreenManager.Instance.Update(gameTime);
+            // TODO: Add your update logic here
 
             base.Update(gameTime);
         }
@@ -81,9 +75,7 @@ namespace Engine
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
-            ScreenManager.Instance.Draw(spriteBatch);
-            spriteBatch.End();
+            // TODO: Add your drawing code here
 
             base.Draw(gameTime);
         }
