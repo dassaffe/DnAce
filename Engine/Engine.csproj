@@ -11,50 +11,178 @@
     <RootNamespace>Engine</RootNamespace>
     <AssemblyName>Engine</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MonoGamePlatform>Windows</MonoGamePlatform>
+    <MonoGamePlatform>WindowsGL</MonoGamePlatform>
     <MonoGameContentBuilderExe>
     </MonoGameContentBuilderExe>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Windows\Debug\</OutputPath>
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
     <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Windows\Release\</OutputPath>
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
     <DefineConstants>TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Game1.cs" />
+    <Compile Include="Components\HeadUpDisplayComponent.cs" />
+    <Compile Include="Components\InputComponent.cs" />
+    <Compile Include="Components\LocalComponent.cs" />
+    <Compile Include="Components\MapLoader.cs" />
+    <Compile Include="Components\MouseComponent.cs" />
+    <Compile Include="Components\MusicComponent.cs" />
+    <Compile Include="Components\SceneComponent.cs" />
+    <Compile Include="Components\ScreenComponent.cs" />
+    <Compile Include="Components\SimulationComponent.cs" />
+    <Compile Include="Components\SoundComponent.cs" />
+    <Compile Include="Controls\Control.cs" />
+    <Compile Include="Controls\DialogList.cs" />
+    <Compile Include="Controls\Icon.cs" />
+    <Compile Include="Controls\InventoryList.cs" />
+    <Compile Include="Controls\ListControl.cs" />
+    <Compile Include="Controls\MenuList.cs" />
+    <Compile Include="Controls\Panel.cs" />
+    <Compile Include="Controls\VerticalListControl.cs" />
+    <Compile Include="Controls\HorizontalListControl.cs" />
+    <Compile Include="Controls\Label.cs" />
+    <Compile Include="Engine.cs" />
+    <Compile Include="Interface\IAttackable.cs" />
+    <Compile Include="Interface\IAttacker.cs" />
+    <Compile Include="Interface\ICollectable.cs" />
+    <Compile Include="Interface\ICollidable.cs" />
+    <Compile Include="Interface\IInteractable.cs" />
+    <Compile Include="Interface\IInteractor.cs" />
+    <Compile Include="Interface\IInventory.cs" />
+    <Compile Include="Interface\IMapElement.cs" />
+    <Compile Include="Model\AggressiveAi.cs" />
+    <Compile Include="Model\Ai.cs" />
+    <Compile Include="Model\Coin.cs" />
+    <Compile Include="Model\Dialog.cs" />
+    <Compile Include="Model\NPC.cs" />
+    <Compile Include="Model\Enemy.cs" />
+    <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\Layer.cs" />
+    <Compile Include="Model\Player.cs" />
+    <Compile Include="Model\Area.cs" />
+    <Compile Include="Model\Character.cs" />
+    <Compile Include="Model\Portal.cs" />
+    <Compile Include="Model\Quest.cs" />
+    <Compile Include="Model\QuestProgress.cs" />
+    <Compile Include="Model\Sprite.cs" />
+    <Compile Include="Model\Tile.cs" />
+    <Compile Include="Model\WalkingAi.cs" />
+    <Compile Include="Model\World.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendering\Camera.cs" />
+    <Compile Include="Rendering\CharacterRenderer.cs" />
+    <Compile Include="Rendering\NineTileRenderer.cs" />
+    <Compile Include="Rendering\SimpleItemRenderer.cs" />
+    <Compile Include="Rendering\ItemRenderer.cs" />
+    <Compile Include="Rendering\SpriteRenderer.cs" />
+    <Compile Include="Rendering\SimpleSpriteRenderer.cs" />
+    <Compile Include="Screens\DialogScreen.cs" />
+    <Compile Include="Screens\InventoryScreen.cs" />
+    <Compile Include="Screens\MainMenuScreen.cs" />
+    <Compile Include="Screens\Screen.cs" />
+    <Compile Include="Screens\ShoutScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MSBuildProgramFiles32)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Icons\charicon.png" />
+    <Content Include="Content\Icons\coinicon.png" />
+    <Content Include="Content\Icons\decardicon.png" />
+    <Content Include="Content\Icons\heidiicon.png" />
+    <Content Include="Content\Icons\ironswordicon.png" />
+    <Content Include="Content\Icons\orcicon.png" />
+    <Content Include="Content\Icons\tradericon.png" />
+    <Content Include="Content\Icons\woodswordicon.png" />
+    <Content Include="Content\Music\houseloop.wav" />
+    <Content Include="Content\Music\menuloop.wav" />
+    <Content Include="Content\Music\townloop.wav" />
+    <Content Include="Content\Music\woodloop.wav" />
+    <Content Include="Content\Sounds\click.wav" />
+    <Content Include="Content\Sounds\clock.wav" />
+    <Content Include="Content\Sounds\coin.wav" />
+    <Content Include="Content\Sounds\hit.wav" />
+    <Content Include="Content\Sounds\sword.wav" />
+    <Content Include="Content\Sprites\char.png" />
+    <Content Include="Content\Sprites\coin_gold.png" />
+    <Content Include="Content\Sprites\coin_silver.png" />
+    <Content Include="Content\Sprites\decard.png" />
+    <Content Include="Content\Sprites\heidi.png" />
+    <Content Include="Content\Sprites\orc.png" />
+    <Content Include="Content\Sprites\trader.png" />
+    <Content Include="Content\Tilesets\landscape.png" />
+    <Content Include="Content\Tilesets\town.png" />
+    <Content Include="Content\Tilesets\trees_plants_rocks.png" />
+    <Content Include="Content\UI\hearts.png" />
+    <Content Include="Content\UI\ui.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <MonoGameContentReference Include="Content\Content.mgcb" />
+    <None Include="app.config" />
+    <Content Include="Content\Fonts\AdvoCut.spritefont" />
+    <Content Include="Content\Fonts\KenPixel.spritefont" />
+    <MonoGameContentReference Include="Content\GameContent.mgcb" />
+    <Content Include="Content\Maps\shop.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Maps\town.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Maps\wood.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\VCROSDMono.spritefont" />
+    <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
