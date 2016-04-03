@@ -180,6 +180,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Fonts\VCROSDMono.spritefont" />
+    <None Include="Content\Fonts\AdvoCut.ttf" />
+    <None Include="Content\Fonts\kenpixel_square.ttf" />
+    <None Include="Content\Fonts\VCR_OSD_MONO.ttf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
