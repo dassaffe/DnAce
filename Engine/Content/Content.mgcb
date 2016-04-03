@@ -13,3 +13,48 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin bgm/March.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:bgm/March.ogg
+
+#begin splash/cover.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:splash/cover.jpg
+
+#begin bgv/bgv.mp4
+/importer:H264Importer
+/processor:VideoProcessor
+/build:bgv/bgv.mp4
+
+#begin bgv/bgv2.wmv
+/importer:WmvImporter
+/processor:VideoProcessor
+/build:bgv/bgv2.wmv
+
+#begin bgv/bgv4.wmv
+/importer:WmvImporter
+/processor:VideoProcessor
+/build:bgv/bgv4.wmv
+
+#begin sprites/mouse.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:sprites/mouse.png
+

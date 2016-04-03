@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using Steamworks;
 
 // TEST 
 // DFU Test Branch
@@ -15,13 +17,22 @@ namespace Engine
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        readonly GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch;
+        private Texture2D _splashScreenImage;
+        private Texture2D _mouseCursor;
+        private Texture2D _videoTexture2D;
+        private Video _video;
+        private VideoPlayer _videoPlayer;
+        private BasicEffect basicEffect;
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
+            _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            Window.AllowUserResizing = true;
+            //_graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            //_graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
         }
 
         /// <summary>
@@ -44,9 +55,18 @@ namespace Engine
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            Song bgm = Content.Load<Song>("bgm/March");
+            _splashScreenImage = Content.Load<Texture2D>("splash/cover");
+            _mouseCursor = Content.Load<Texture2D>("sprites/mouse");
+            _video = Content.Load<Video>("bgv/bgv4");
+            _videoPlayer = new VideoPlayer();
+            //_videoPlayer.IsLooped = true;
+            //_videoPlayer.IsMuted = true;
 
+            MediaPlayer.Play(bgm);
             // TODO: use this.Content to load your game content here
+
         }
 
         /// <summary>
@@ -69,6 +89,11 @@ namespace Engine
                 Exit();
 
             // TODO: Add your update logic here
+            if (_videoPlayer.State != MediaState.Playing)
+            {
+                _videoPlayer.Play(_video);
+            }
+
 
             base.Update(gameTime);
         }
@@ -80,10 +105,31 @@ namespace Engine
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            _spriteBatch.Begin(SpriteSortMode.Immediate);
 
-            // TODO: Add your drawing code here
+            
+             // _spriteBatch.Draw(_splashScreenImage, new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), Color.White);
+            if (_videoPlayer.State == MediaState.Playing)
+            {
+                _videoTexture2D = _videoPlayer.GetTexture();
+                _spriteBatch.Draw(_videoTexture2D,
+                    new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight),
+                    Color.White);
+                _videoTexture2D.Dispose();
+            }
 
+
+            // mouse cursor
+            var x = Mouse.GetState().X;
+            var y = Mouse.GetState().Y;
+
+            _spriteBatch.Draw(_mouseCursor, new Vector2(x, y), new Rectangle(0, 0, 32, 32), Color.AliceBlue);
+
+
+            _spriteBatch.End();
             base.Draw(gameTime);
         }
+
+
     }
 }
