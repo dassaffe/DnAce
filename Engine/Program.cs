@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Engine
+namespace DnAce.Engine
 {
 #if WINDOWS || LINUX
     /// <summary>
@@ -14,7 +14,7 @@ namespace Engine
         [STAThread]
         static void Main()
         {
-            using (Game1 game = new Game1())
+            using (DnAce game = new DnAce())
                 game.Run();
         }
     }

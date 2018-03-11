@@ -3,3 +3,8 @@
 ################################################################################
 
 /.vs
+/Engine/bin
+/Engine/obj
+/Engine/Content/bin
+/Engine/Content/obj
+*.user
